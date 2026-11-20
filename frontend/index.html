@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NBA Stats Local</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1 onclick="showTeamGrid()">🏀 NBA Stats Local</h1>
+    <span id="sync-status"></span>
+  </header>
+
+  <main>
+    <section id="team-grid-view">
+      <h2>Elige un equipo</h2>
+      <div id="team-grid" class="team-grid"></div>
+    </section>
+
+    <section id="team-games-view" class="hidden">
+      <button id="back-btn" onclick="showTeamGrid()">&larr; Todos los equipos</button>
+      <h2 id="team-title"></h2>
+      <div id="games-list" class="games-list"></div>
+      <div id="loading" class="loading hidden">Cargando más partidos...</div>
+      <div id="no-more" class="no-more hidden">No hay más partidos guardados localmente.
+        Corre <code>python sync.py games --season &lt;año&gt;</code> para traer temporadas anteriores.</div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

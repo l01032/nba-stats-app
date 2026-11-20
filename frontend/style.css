@@ -1,0 +1,151 @@
+:root {
+  --bg: #0e1117;
+  --card: #171b24;
+  --border: #262c38;
+  --text: #e7e9ee;
+  --muted: #8b93a3;
+  --win: #2ecc71;
+  --loss: #e74c3c;
+  --accent: #f0a500;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Tipografía tipo "marcador deportivo": condensada, en mayúsculas, bien marcada.
+   Usa fuentes que ya traen Windows/Mac, sin depender de internet. */
+h1, h2, .team-badge-abbr, .game-score {
+  font-family: "Arial Narrow", "Segoe UI Semibold", -apple-system, Segoe UI, sans-serif;
+  font-stretch: condensed;
+  letter-spacing: 0.03em;
+}
+
+.team-name {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 10;
+}
+
+header h1 { font-size: 1.1rem; margin: 0; cursor: pointer; }
+#sync-status { font-size: 0.75rem; color: var(--muted); }
+
+main { max-width: 760px; margin: 0 auto; padding: 20px; }
+
+.hidden { display: none !important; }
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.team-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--team-primary, var(--accent));
+  border-radius: 10px;
+  padding: 14px 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.12s, border-color 0.15s;
+}
+.team-card:hover {
+  border-color: var(--team-secondary, var(--accent));
+  transform: translateY(-2px);
+}
+
+.team-badge {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, var(--team-primary, var(--accent)) 55%, var(--team-secondary, var(--accent)) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.12);
+}
+
+.team-badge-abbr {
+  color: #fff;
+  font-weight: 800;
+  font-size: 1rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.team-name { font-size: 0.82rem; color: var(--text); }
+.team-conf { font-size: 0.7rem; color: var(--muted); }
+
+#back-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+#team-title {
+  display: inline-block;
+  padding-bottom: 4px;
+  border-bottom: 3px solid var(--team-primary, var(--accent));
+}
+
+.games-list { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+
+.game-row {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.game-left { display: flex; flex-direction: column; }
+.game-date { font-size: 0.7rem; color: var(--muted); }
+.game-opp { font-size: 0.9rem; }
+.game-right { display: flex; align-items: center; gap: 10px; }
+.game-score { font-weight: 700; font-size: 1rem; }
+
+.badge-result {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: white;
+}
+.badge-win { background: var(--win); }
+.badge-loss { background: var(--loss); }
+
+.loading, .no-more {
+  text-align: center;
+  color: var(--muted);
+  padding: 16px;
+  font-size: 0.85rem;
+}
